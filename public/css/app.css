@@ -217,6 +217,7 @@ img {
 svg {
   overflow: hidden;
   vertical-align: middle;
+  fill:#18bc00;
 }
 
 table {
@@ -10926,5 +10927,6 @@ a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
+
 }
 

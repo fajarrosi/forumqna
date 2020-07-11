@@ -18,6 +18,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+     <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
+
+    <link href="{{ asset('plugins/jquery-upvote/jquery.upvote.css') }}" rel="stylesheet"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- implement upvote  -->
+    <script  type="text/javascript" src="{{ asset('/js/upvote.js') }}"></script>
+
+    @stack('css')
 </head>
 <body>
     <div id="app">
@@ -36,13 +48,13 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                              <li class="nav-item">
-                                    <a class="nav-link" href="/questions/top"> Top </a>
+                                    <a class="nav-link" href="#"> Top </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/questions/new"> New </a>
+                                <a class="nav-link" href="/pertanyaan/terbaru"> Terbaru </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/question/ask">Ask </a></a>
+                                <a class="nav-link" href="/pertanyaan/tambah">Tanya </a></a>
                             </li>
                         </ul>
 
@@ -65,11 +77,20 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/pertanyaan/tampil/{{Auth::id()}}">
+                                            Pertanyaan Saya
+                                        </a>
+
+                                        <a class="dropdown-item" href="/jawaban/tampil/{{Auth::id()}}">
+                                            Jawaban Saya
+                                        </a>
+                                        <hr>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
+                                        
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -84,9 +105,22 @@
         </div>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        @include('layouts.sidebar_auth')
+                    </div>
+                    <div class="col-md-9">
+                        @yield('content')
+                    </div>
+                </div>
+            </div>            
         </main>
 
     </div>
+    <!-- Jquery -->
+
+
+@stack('scripts')
 </body>
 </html>

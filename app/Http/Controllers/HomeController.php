@@ -3,18 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Pertanyaan;
+use App\User;
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
@@ -23,6 +16,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = Pertanyaan::orderBy('created_at', 'desc')->paginate(10);
+        
+        return view('welcome',compact('data'));
+    }
+
+    public function reputasi($id)
+    {
+        $data = User::select('reputasi')->where('id',$id)->get();
+        return view('reputasi',compact('data'));
     }
 }

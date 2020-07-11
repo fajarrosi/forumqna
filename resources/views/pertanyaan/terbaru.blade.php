@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@guest
-       <div class="row">
+    @guest
+      <div class="row">
           <div class="col-md-12">
               <div class="card">
                   <div class="card-body">
@@ -13,8 +13,7 @@
               </div>
           </div>
       </div>
-@else
-
+    @else
         @if (Session::has('flash_message'))
             <div class="alert alert-success">{!!Session::get('flash_message')!!}</div>
         @endif
@@ -30,20 +29,7 @@
           </div>
       </div>
       <br>
-      <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                   <h4>Top pertanyaan</h4>
-                   <hr>
-                   <p>Isi top pertanyaan</p>
-                   <br>
-                   
-                </div>
-            </div>
-        </div>
-       </div>
-       <br>
+
        <div class="row">
           <div class="col-md-12">
               <div class="card">
@@ -53,7 +39,7 @@
                     @foreach($data as $q)
                      <div class="row">
                        <div class="col-xs-2 col-md-1">
-                        @include('pertanyaan_vote') 
+                         @include('pertanyaan_vote')
                        </div>
                        <div class="col-xs-10 col-md-11">
                          <!-- judul pertanyaan -->
@@ -90,14 +76,11 @@
                           <hr>
                         @endif
                       @endforeach
-                      <br>
                       {{ $data->links() }}
                   </div>
               </div>
           </div>
       </div>
       <br>
-@endguest
+    @endguest
 @endsection
-
-
