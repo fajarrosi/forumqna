@@ -9,7 +9,7 @@
   </div>
 
 </form> 
-<div id="solved">
+<div id="solved" class="invisible">
  	<svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg>
  </div>
 @include('modal')

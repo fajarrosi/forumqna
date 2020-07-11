@@ -82,9 +82,7 @@
                       @foreach($data->jawaban as $jwb)
                       <div class="row">
                         <div class="col-xs-2 col-md-1">
-                          @include('jawaban_vote')
-                         
-                          
+                          @include('jawaban_vote')                          
                         </div>
                         <div class="col-xs-10 col-md-11">
 
