@@ -190,7 +190,9 @@
 <script src="https://cdn.ckeditor.com/4.14.1/standard-all/ckeditor.js"></script>
 <script>
   $(function(){
-    CKEDITOR.replace('isi');
+    CKEDITOR.replace('isi', {
+      uiColor: '#0AFDFD'
+    });
   });
 </script>
 

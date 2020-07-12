@@ -14,7 +14,6 @@
 <!-- Nucleo icons -->
 <link rel="stylesheet" href="{{ asset('template/dist/dashboard/assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
 
-
 <!-- Fontawesome -->
 <link type="text/css" href="{{ asset('template/dist/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 
@@ -27,6 +26,11 @@
     <script  type="text/javascript" src="{{ asset('/js/upvote.js') }}"></script>
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+    <style type="text/css">
+        .modal-backdrop {
+          z-index: -1;
+        }
+    </style>
     @stack('css')
 </head>
 <body>
@@ -57,7 +61,6 @@
 </div>
     </main>
 
-<script src="{{ asset('template/dist/vendor/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('template/dist/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
 <script src="{{ asset('template/dist/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('template/dist/vendor/headroom.js/dist/headroom.min.js') }}"></script>

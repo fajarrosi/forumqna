@@ -219,6 +219,7 @@ $(document).ready(function() {
                 //merubah class jadi disable dan modal muncul
                 $('a.downvote').removeClass('downvote-on');
                 $('#Modal').modal('show');
+                return false;
             }else{
                 // Cast vote to PHP
                 $.ajax({
@@ -229,6 +230,7 @@ $(document).ready(function() {
                     success: function( data ) {
                         if(data.status == 'success') {
                             console.log(data.msg);
+
                         } else {
                             console.log(data.msg);
                         }
@@ -268,6 +270,7 @@ $(document).ready(function() {
                     success: function( data ) {
                         if(data.status == 'success') {
                             console.log(data.msg);
+                            $('#solved').addClass('visible');
                         } else {
                             console.log(data.msg);
                         }
