@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 @guest
  <div class="row">
@@ -16,12 +16,11 @@
 @if (Session::has('flash_message'))
   <div class="alert alert-success">{!!Session::get('flash_message')!!}</div>
 @endif
+      <div class="col-12 col-lg-9">
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
 
- <div class="row" >
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                    <div class="row">
+                <div class="card-body">
+                                       <div class="row">
 
                       <div class="col-xs-2 col-md-1" >
                           <form method="post">
@@ -67,16 +66,13 @@
                         {!!$data->isi!!}
                       </div>
                     </div>
-                  </div>
-              </div>
+                </div>
           </div>
-</div>
+          <br>
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
 
- <div class="row" style="margin-top: 15px;">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                     <h4>Jawaban</h4>
+                <div class="card-body">
+                   <h4>Jawaban</h4>
                      <hr>
                      @if(!$data->jawaban->isEmpty())
                       @foreach($data->jawaban as $jwb)
@@ -150,18 +146,14 @@
                      @else
                      <p>Belum Jawaban</p>
                      @endif
-                  </div>
-              </div>
+                </div>
           </div>
-</div>
+          <br>
+          @if($data->user_id != Auth::user()->id)
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
 
-@if($data->user_id != Auth::user()->id)
-<!-- muncul ketika id user tidak sama dengan id user penanya -->
- <div class="row" style="margin-top: 15px;">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                     <h4>Jawaban Kamu</h4>
+                <div class="card-body">
+                    <h4>Jawaban Kamu</h4>
                      <hr>
                      <form method="post" enctype="multipart/form-data" action="{{route('jawaban.simpan')}}">
                       @csrf
@@ -179,11 +171,14 @@
                         <button class="btn btn-sm btn-primary" type="submit">Submit</button>
                       </div>
                      </form>
-                  </div>
-              </div>
+                </div>
           </div>
+          @endif
 </div>
-@endif
+
+
+
+
 
 @endguest
 
@@ -195,9 +190,7 @@
 <script src="https://cdn.ckeditor.com/4.14.1/standard-all/ckeditor.js"></script>
 <script>
   $(function(){
-    CKEDITOR.replace('isi', {
-      uiColor: '#0AFDFD'
-    });
+    CKEDITOR.replace('isi');
   });
 </script>
 

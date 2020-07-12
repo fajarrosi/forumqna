@@ -9,7 +9,14 @@
   </div>
 
 </form> 
-<div id="solved" class="invisible">
+<div id="solved" class="{{ $jwb->votes && $jwb->votes->contains('user_id', $data->user_id) ? ($jwb->votes->where('user_id', $data->user_id)->first()->jumlah_vote == 1 ? 'visible' : 'invisible') : 'invisible'}}">
  	<svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36"><path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path></svg>
  </div>
 @include('modal')
+@push('css')
+<style type="text/css">
+	svg{
+		fill:#18bc00;	
+	}
+</style>
+@endpush

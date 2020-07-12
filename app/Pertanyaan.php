@@ -34,6 +34,7 @@ class Pertanyaan extends Model
             $data->tag()->attach($tag->id);
         }
 
+        return $data;
 
     }
 
@@ -59,7 +60,29 @@ class Pertanyaan extends Model
             //memasukkan ke relasi pertanyaan_tag
             $data->tag()->attach($tag->id);
         }
+        return $data;
 
+    }
+
+    public static function top_limited($limit)
+    {
+        return self::join('vote', 'pertanyaan.id', '=', 'vote.pertanyaan_id')
+            ->select('pertanyaan.*', DB::raw('sum(vote.jumlah_vote) as vote_ttl'))
+            ->groupBy('pertanyaan.id')
+            ->orderBy('vote_ttl', 'desc')
+            ->orderBy('pertanyaan.created_at', 'desc')
+            ->limit($limit)
+            ->get();
+    }
+
+    public static function top()
+    {
+        return self::join('vote', 'pertanyaan.id', '=', 'vote.pertanyaan_id')
+            ->select('pertanyaan.*', DB::raw('sum(vote.jumlah_vote) as vote_ttl'))
+            ->groupBy('pertanyaan.id')
+            ->orderBy('vote_ttl', 'desc')
+            ->orderBy('pertanyaan.created_at', 'desc')
+            ->paginate(10);
     }
 
     public function tag(){

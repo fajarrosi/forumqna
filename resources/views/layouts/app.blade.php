@@ -48,7 +48,7 @@
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
                              <li class="nav-item">
-                                    <a class="nav-link" href="#"> Top </a>
+                                    <a class="nav-link" href="/pertanyaan/top"> Top </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/pertanyaan/terbaru"> Terbaru </a>

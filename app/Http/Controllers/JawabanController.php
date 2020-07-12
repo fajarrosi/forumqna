@@ -39,7 +39,6 @@ class JawabanController extends Controller
     public function tampil($id)
     {
     	$data = Jawaban::where('user_id',$id)->orderBy('id','ASC')->paginate(10);
-    	// dd($data);
     	return view('jawaban.jawabanku',compact('data'));
     }
 }

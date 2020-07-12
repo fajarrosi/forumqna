@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 @guest
  <div class="row">
@@ -13,13 +13,15 @@
           </div>
       </div>
 @else
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-               <h4>Pertanyaan</h4>
-               <hr>
-               <form method="post" action="{{route('pertanyaan.simpan')}}" enctype="multipart/form-data">
+<div class="col-12 col-lg-9">
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+            <div class="card-header text-center pb-0">
+                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3"><i class="fas fa-bullhorn"></i></div>
+                <h4 class="text-black">Menambah Pertanyaan</h4>
+                <p>Silahkan bertanya dengan mengisi form dibawah ini</p>
+            </div>
+                <div class="card-body">
+                    <form method="post" action="{{route('pertanyaan.simpan')}}" enctype="multipart/form-data">
                 @csrf
                  <div class="form-group">
                     <label>Judul pertanyaan</label>
@@ -37,10 +39,10 @@
                    <button class="btn btn-sm btn-primary" type="submit">Submit</button>
                  </div>
                </form>
-            </div>
-        </div>
-    </div>
-</div>
+                </div>
+          </div>
+      </div>
+
 @endguest
 
 @endsection
@@ -48,9 +50,7 @@
 <script src="https://cdn.ckeditor.com/4.14.1/standard-all/ckeditor.js"></script>
 <script>
   $(function(){
-    CKEDITOR.replace('isi', {
-      uiColor: '#0AFDFD'
-    });
+    CKEDITOR.replace('isi');
   });
 </script>
 

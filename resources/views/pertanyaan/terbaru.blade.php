@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
     @guest
@@ -17,24 +17,13 @@
         @if (Session::has('flash_message'))
             <div class="alert alert-success">{!!Session::get('flash_message')!!}</div>
         @endif
-       <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                     <h4>Larastack</h4>
-                     <hr>
-                     <p>Aplikasi diskusi tanya jawab</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <br>
-
-       <div class="row">
-          <div class="col-md-12">
-              <div class="card">
-                  <div class="card-body">
-                     <h4>Pertanyaan Terbaru</h4>
+        <div class="col-12 col-lg-9">
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+            <div class="card-header text-center pb-0">
+                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3"><i class="fas fa-bullhorn"></i></div>
+                <h4 class="text-black">Pertanyaan Terbaru</h4>
+            </div>
+                <div class="card-body">
                         <hr>
                     @foreach($data as $q)
                      <div class="row">
@@ -77,10 +66,9 @@
                         @endif
                       @endforeach
                       {{ $data->links() }}
-                  </div>
-              </div>
+                </div>
           </div>
       </div>
-      <br>
+
     @endguest
 @endsection

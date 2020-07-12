@@ -19,7 +19,7 @@ class PertanyaanController extends Controller
     {
     	$data = Pertanyaan::simpan($request,Auth::user()->id);
     	Session::flash('flash_message', '<P><h3>Pertanyaan Berhasil Ditambahkan</h3></P>');
-    	return redirect('/pertanyaan/tampil/'.Auth::user()->id); //redirect ke show semua pertanyaan
+    	return redirect('/pertanyaan/jawab/'.$data->id); //redirect ke show semua pertanyaan
     } 
 
     public function tampil($id)
@@ -41,10 +41,10 @@ class PertanyaanController extends Controller
 
     public function ubah($id, Request $request)
     {
-    	Pertanyaan::uptodate($id,$request);
+    	$data = Pertanyaan::uptodate($id,$request);
 
     	Session::flash('flash_message', '<P><h3>Pertanyaan Berhasil Dirubah</h3></P>');
-    	return redirect('/pertanyaan/tampil/'.Auth::user()->id);
+    	return redirect('/pertanyaan/jawab/'.$data->id);
     }
 
     public function hapus($id)
@@ -72,5 +72,12 @@ class PertanyaanController extends Controller
     {
        $data = Pertanyaan::orderBy('created_at', 'desc')->paginate(10);
        return view('pertanyaan.terbaru',compact('data'));
+    }
+
+    //top pertanyaan
+    public function top()
+    {
+        $top = Pertanyaan::top();
+        return view('top',compact('top'));
     }
 }

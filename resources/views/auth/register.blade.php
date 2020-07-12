@@ -1,13 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+    <div class="col-12 col-lg-9">
+          <div class="card shadow-soft bg-white border-light animate-up-3 text-gray py-4 mb-5 mb-lg-0">
+            <div class="card-header text-center pb-0">
+                <div class="icon icon-shape icon-shape-primary rounded-circle mb-3"><i class="fa fa-fire"></i></div>
+                <h4 class="text-black">{{ __('Register') }}</h4>
+            </div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -69,7 +70,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
+
 @endsection

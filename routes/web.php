@@ -49,4 +49,7 @@ Route::group(['middleware' =>'auth'],function(){
 
 	//Reputasi
 	Route::get('reputasi/{id}','HomeController@reputasi');
+
+	//top Pertanyaan
+	Route::get('pertanyaan/top','PertanyaanController@top');
 });

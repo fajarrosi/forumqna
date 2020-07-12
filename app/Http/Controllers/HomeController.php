@@ -17,8 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $data = Pertanyaan::orderBy('created_at', 'desc')->paginate(10);
-        
-        return view('welcome',compact('data'));
+        $top = Pertanyaan::top_limited(3);
+        return view('welcome',compact('data','top'));
     }
 
     public function reputasi($id)
